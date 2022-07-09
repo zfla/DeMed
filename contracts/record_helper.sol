@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "./record_generator.sol";
@@ -7,9 +8,9 @@ contract RecordHelper is RecordGenerator {
     mapping (uint => address[]) recordToApproved;
 
     // checking if an individual running a command is approved by the user
-    function Approved(uint _recordId) internal view returns(bool memory) {
+    function Approved(uint _recordId) internal view returns(bool) {
         bool approved = false;
-        for (uint i == 0; i < recordToApproved[_recordId].length; i++) {
+        for (uint i=0; i<recordToApproved[_recordId].length; i++) {
             if (recordToApproved[_recordId][i] == msg.sender) {
                 approved = true;
             }
@@ -18,16 +19,16 @@ contract RecordHelper is RecordGenerator {
     }
 
     modifier onlyApproved(uint _recordId) {
-        require(msg.sender == recordToOwner[recordId] | Approved(_recordId) == true)
+        require(msg.sender == recordToOwner[_recordId] || Approved(_recordId) == true);
         _;
     }
 
     modifier onlyOwnerOf(uint _recordId) {
-        require(msg.sender == recordToOwner[recordId]);
+        require(msg.sender == recordToOwner[_recordId]);
         _;
     }
 
-    function addApproved(uint _recordId, address _approvedAddress) external onlyOwnerOf(_recordId) {eq
+    function addApproved(uint _recordId, address _approvedAddress) external onlyOwnerOf(_recordId) {
         recordToApproved[_recordId].push(_approvedAddress);
     }
 
@@ -35,16 +36,3 @@ contract RecordHelper is RecordGenerator {
 
 
 
-/// any individual with permission given by the owner of the medical record can edit sections of the record
-/// this prevents anyone from editing the person's contract, but allows some level of editability outside of the individual only 
-
-
-// think of a way to point to 'encrypted' health data
-// wallets act as a 'key' to unlock encrypted data
-
-// onboarding exam grades and other certifications to a wallet??
-
-// GENIUS. place an object at a certain place, then transactions can take place
-// coordination point to use soul bound tokens (vitalik)
-
-// value delivering systems, how they are limiting access to resources, and how they can be disaggregated
