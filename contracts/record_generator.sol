@@ -1,8 +1,8 @@
-pragma solidity >=0.5.0 <0.6.0;
+pragma solidity ^0.8.0;
 
-import "./ownable.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
-contract generateRecord is Ownable {
+contract RecordGenerator is Ownable {
     event newRecord(uint recordId);
 
     struct Record {
@@ -32,6 +32,6 @@ contract generateRecord is Ownable {
         uint x = records.push(records.length, _name, _dob);
         recordToOwner[x] = msg.sender;
         ownerRecordCount[msg.sender]++;
-        emit newRecord(uint records.length);
+        emit newRecord(records.length);
     }
 }
