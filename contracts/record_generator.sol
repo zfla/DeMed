@@ -18,7 +18,7 @@ contract RecordGenerator is Ownable {
     function getRecordByOwner(address _owner) external view returns(uint[] memory) {
         uint[] memory result = new uint[](ownerRecordCount[_owner]);
         uint counter = 0;
-        for (uint i = 0; i < records.length; i++) {
+        for (uint i=0; i<records.length; i++) {
             if (recordToOwner[i] == _owner) {
                 result[counter] = i;
                 counter++;
