@@ -18,7 +18,7 @@ contract RecordHelper is RecordGenerator {
         return approved;
     }
 
-    modifier onlyApproved(uint _recordId) {
+    modifier onlyApprovedOf(uint _recordId) {
         require(msg.sender == recordToOwner[_recordId] || Approved(_recordId) == true);
         _;
     }

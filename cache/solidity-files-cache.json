@@ -111,8 +111,8 @@
       ]
     },
     "C:\\Users\\Zain\\Desktop\\projects\\Ethereum\\Medical_Records\\contracts\\record_helper.sol": {
-      "lastModificationDate": 1657389052397,
-      "contentHash": "b37e9a6784980d704834bd3d0d898e95",
+      "lastModificationDate": 1657463523390,
+      "contentHash": "2bffe78c5c8f7541f6c348a0a7b26ccd",
       "sourceName": "contracts/record_helper.sol",
       "solcConfig": {
         "version": "0.8.0",
